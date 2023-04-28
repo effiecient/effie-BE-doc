@@ -3,10 +3,6 @@ title: API Reference
 
 language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
   - shell
-  - ruby
-  - python
-  - javascript
-
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
@@ -20,10 +16,10 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: Documentation for the Effie API
 ---
 
-# Introduction
+# example Introduction
 
 Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
@@ -31,32 +27,14 @@ We have language bindings in Shell, Ruby, Python, and JavaScript! You can view c
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
+# example Authentication
 
 > To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here" \
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
@@ -71,175 +49,204 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# Auth
 
-## Get All Kittens
+## check auth
 
-```ruby
-require 'kittn'
+### HTTP Request
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+`POST https://api.effie.boo/api/auth`
 
-```python
-import kittn
+### Body Parameters
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+| Parameter | required | Description                                            |
+| --------- | -------- | ------------------------------------------------------ |
+| token     | true     | The effie token to check. given from login or register |
 
 ```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
+curl "https://api.effie.boo/api/auth" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"token": "token"}'
 ```
 
-```javascript
-const kittn = require('kittn');
+> The above command returns JSON structured like this:
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+> if success, return username with photoURL
+
+```json
+{
+  "success": true,
+  "username": "username",
+  "photoURL": "https://cdn.effie.boo/api/users/username/photo"
+}
+```
+
+> if false, return message
+
+```json
+{
+  "success": false,
+  "message": "message"
+}
+```
+
+# Users
+
+## check
+
+used to check if a user has been registered
+
+### HTTP Request
+
+`POST https://api.effie.boo/api/users/check`
+
+### Body Parameters
+
+| Parameter | required | Description               |
+| --------- | -------- | ------------------------- |
+| uid       | true     | The uid from google login |
+
+### Header Parameters
+
+| Parameter     | required | Description                    |
+| ------------- | -------- | ------------------------------ |
+| Authorization | true     | access token from google login |
+
+```shell
+  curl "https://api.effie.boo/api/users/check" \
+  -X POST \
+  -H "Authorization: auth" \
+  -H "Content-Type: application/json" \
+  -d '{"uid": "uid"}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+{
+  "status": "SUCCESS",
+  "data": {
+    "isRegistered": true // or false
   }
-]
+}
 ```
 
-This endpoint retrieves all kittens.
+## login
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://api.effie.boo/api/users/login`
 
-### Query Parameters
+### Body Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+| Parameter | required | Description               |
+| --------- | -------- | ------------------------- |
+| uid       | true     | The uid from google login |
+| photoURL  | true     | The photoURL from google  |
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+### Header Parameters
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+| Parameter     | required | Description              |
+| ------------- | -------- | ------------------------ |
+| Authorization | true     | access token from google |
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+  curl "https://api.effie.boo/api/users/login" \
+  -X POST \
+  -H "Authorization: auth" \
+  -H "Content-Type: application/json" \
+  -d '{"uid": "uid", "photoURL": "photoURL"}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "status": "SUCCESS",
+  "token": "effieToken",
+  "username": "username",
+  "message": "Login successful"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+## register
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://api.effie.boo/api/users/register`
 
-### URL Parameters
+### Body Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+| Parameter | required | Description               |
+| --------- | -------- | ------------------------- |
+| uid       | true     | The uid from google login |
+| photoURL  | true     | The photoURL from google  |
+| username  | true     | The username              |
 
-## Delete a Specific Kitten
+### Header Parameters
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+| Parameter     | required | Description              |
+| ------------- | -------- | ------------------------ |
+| Authorization | true     | access token from google |
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+  curl "https://api.effie.boo/api/users/register" \
+  -X POST \
+  -H "Authorization: auth" \
+  -H "Content-Type: application/json" \
+  -d '{"uid": "uid", "photoURL": "photoURL", "username": "username"}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "status": "SUCCESS",
+  "token": "effieToken",
+  "username": "username",
+  "message": "User registered"
 }
 ```
 
-This endpoint deletes a specific kitten.
+# links and folders
+
+## read links or folders
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://api.effie.boo/api/directory/<username>/<path>/<to>/<folder>/<or>/<link>`
 
-### URL Parameters
+## write link
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+### HTTP Request
 
+`POST https://api.effie.boo/api/directory/link`
+
+## write folder
+
+### HTTP Request
+
+`POST https://api.effie.boo/api/directory/folder`
+
+## update link
+
+### HTTP Request
+
+`PATCH https://api.effie.boo/api/directory/link`
+
+## update folder
+
+### HTTP Request
+
+`PATCH https://api.effie.boo/api/directory/folder`
+
+## delete link or folder
+
+### HTTP Request
+
+`DELETE https://api.effie.boo/api/directory/<username>/<path>/<to>/<folder>/<or>/<link>`
+
+```
+
+```
