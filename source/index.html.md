@@ -301,6 +301,8 @@ curl --request GET \
     "createdOn": "2020-12-12T14:00:00.000Z",
     "lastModified": "2020-12-12T14:00:00.000Z",
     "lastModifiedBy": "christojeffrey",
+    "linkCount": 0,
+    "folderCount": 1,
     "publicAccess": "none",
     "personalAccess": [],
     "children": [
