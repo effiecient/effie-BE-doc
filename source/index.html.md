@@ -19,7 +19,7 @@ meta:
     content: Documentation for the Effie API
 ---
 
-# example Introduction
+# Introduction
 
 documentation for the Effie API
 [effie](https://effie.boo)
