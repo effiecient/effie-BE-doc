@@ -21,63 +21,32 @@ meta:
 
 # example Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# example Authentication
-
-> To authorize, use this code:
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+documentation for the Effie API
+[effie](https://effie.boo)
 
 # Auth
 
-## check auth
+## Check Auth
+
+check if effie token is valid. to get metadata about the user
+
+> example request
 
 ```shell
 curl "https://api.effie.boo/api/auth" \
-  -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"token": "token"}'
+  -X GET \
+  -H "Authorization: auth"
 ```
 
 > The above command returns JSON structured like this:
 
-> if success, return username with photoURL
-
 ```json
 {
-  "success": true,
-  "username": "username",
-  "photoURL": "https://cdn.effie.boo/api/users/username/photo"
-}
-```
-
-> if false, return message
-
-```json
-{
-  "success": false,
-  "message": "message"
+  "status": "SUCCESS",
+  "data": {
+    "username": "username",
+    "photoURL": "https://cdn.effie.boo/api/users/username/photo"
+  }
 }
 ```
 
@@ -85,20 +54,20 @@ curl "https://api.effie.boo/api/auth" \
 
 `POST https://api.effie.boo/api/auth`
 
-### Body Parameters
+### Header Parameters
 
-| Parameter | required | Description                                            |
-| --------- | -------- | ------------------------------------------------------ |
-| token     | true     | The effie token to check. given from login or register |
+| Parameter     | required | Description |
+| ------------- | -------- | ----------- |
+| Authorization | true     | effie token |
 
 # Users
 
-## check
+## Check Google Account
 
-used to check if a user has been registered
+> example request
 
 ```shell
-  curl "https://api.effie.boo/api/users/check" \
+  curl "https://api.effie.boo/api/users/check-google" \
   -X POST \
   -H "Authorization: auth" \
   -H "Content-Type: application/json" \
@@ -111,20 +80,17 @@ used to check if a user has been registered
 {
   "status": "SUCCESS",
   "data": {
-    "isRegistered": true // or false
+    // true or false
+    "isRegistered": true
   }
 }
 ```
 
+used to check if a google account is registered with effie
+
 ### HTTP Request
 
-`POST https://api.effie.boo/api/users/check`
-
-### Body Parameters
-
-| Parameter | required | Description               |
-| --------- | -------- | ------------------------- |
-| uid       | true     | The uid from google login |
+`POST https://api.effie.boo/api/users/check-google`
 
 ### Header Parameters
 
@@ -132,14 +98,22 @@ used to check if a user has been registered
 | ------------- | -------- | ------------------------------ |
 | Authorization | true     | access token from google login |
 
-## login
+### Body Parameters
+
+| Parameter | required | Description               |
+| --------- | -------- | ------------------------- |
+| uid       | true     | The uid from google login |
+
+## Login
+
+> example request
 
 ```shell
-  curl "https://api.effie.boo/api/users/login" \
+  curl "https://api.effie.boo/api/users/login-google" \
   -X POST \
   -H "Authorization: auth" \
   -H "Content-Type: application/json" \
-  -d '{"uid": "uid", "photoURL": "photoURL"}'
+  -d '{"uid": "uid"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -147,15 +121,23 @@ used to check if a user has been registered
 ```json
 {
   "status": "SUCCESS",
-  "token": "effieToken",
-  "username": "username",
-  "message": "Login successful"
+  "data": {
+    "token": "effieToken",
+    "username": "username",
+    "photoURL": "https://cdn.effie.boo/api/users/username/photo"
+  }
 }
 ```
 
 ### HTTP Request
 
-`POST https://api.effie.boo/api/users/login`
+`POST https://api.effie.boo/api/users/login-google`
+
+### Header Parameters
+
+| Parameter     | required | Description              |
+| ------------- | -------- | ------------------------ |
+| Authorization | true     | access token from google |
 
 ### Body Parameters
 
@@ -164,20 +146,16 @@ used to check if a user has been registered
 | uid       | true     | The uid from google login |
 | photoURL  | true     | The photoURL from google  |
 
-### Header Parameters
+## Register
 
-| Parameter     | required | Description              |
-| ------------- | -------- | ------------------------ |
-| Authorization | true     | access token from google |
-
-## register
+> example request
 
 ```shell
   curl "https://api.effie.boo/api/users/register" \
   -X POST \
   -H "Authorization: auth" \
   -H "Content-Type: application/json" \
-  -d '{"uid": "uid", "photoURL": "photoURL", "username": "username"}'
+  -d '{"uid": "uid", "username": "username"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -185,15 +163,23 @@ used to check if a user has been registered
 ```json
 {
   "status": "SUCCESS",
-  "token": "effieToken",
-  "username": "username",
-  "message": "User registered"
+  "data": {
+    "token": "effieToken",
+    "username": "username",
+    "photoURL": "https://cdn.effie.boo/api/users/username/photo"
+  }
 }
 ```
 
 ### HTTP Request
 
 `POST https://api.effie.boo/api/users/register`
+
+### Header Parameters
+
+| Parameter     | required | Description              |
+| ------------- | -------- | ------------------------ |
+| Authorization | true     | access token from google |
 
 ### Body Parameters
 
@@ -202,12 +188,6 @@ used to check if a user has been registered
 | uid       | true     | The uid from google login |
 | photoURL  | true     | The photoURL from google  |
 | username  | true     | The username              |
-
-### Header Parameters
-
-| Parameter     | required | Description              |
-| ------------- | -------- | ------------------------ |
-| Authorization | true     | access token from google |
 
 # links and folders
 
@@ -542,14 +522,3 @@ curl --request GET \
 | Parameter     | required | Description |
 | ------------- | -------- | ----------- |
 | Authorization | true     | effie token |
-
-# error
-
-will return below in general
-
-```json
-{
-  "status": "ERROR",
-  "message": "error message"
-}
-```
