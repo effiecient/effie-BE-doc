@@ -53,16 +53,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 ## check auth
 
-### HTTP Request
-
-`POST https://api.effie.boo/api/auth`
-
-### Body Parameters
-
-| Parameter | required | Description                                            |
-| --------- | -------- | ------------------------------------------------------ |
-| token     | true     | The effie token to check. given from login or register |
-
 ```shell
 curl "https://api.effie.boo/api/auth" \
   -X POST \
@@ -91,27 +81,21 @@ curl "https://api.effie.boo/api/auth" \
 }
 ```
 
+### HTTP Request
+
+`POST https://api.effie.boo/api/auth`
+
+### Body Parameters
+
+| Parameter | required | Description                                            |
+| --------- | -------- | ------------------------------------------------------ |
+| token     | true     | The effie token to check. given from login or register |
+
 # Users
 
 ## check
 
 used to check if a user has been registered
-
-### HTTP Request
-
-`POST https://api.effie.boo/api/users/check`
-
-### Body Parameters
-
-| Parameter | required | Description               |
-| --------- | -------- | ------------------------- |
-| uid       | true     | The uid from google login |
-
-### Header Parameters
-
-| Parameter     | required | Description                    |
-| ------------- | -------- | ------------------------------ |
-| Authorization | true     | access token from google login |
 
 ```shell
   curl "https://api.effie.boo/api/users/check" \
@@ -132,24 +116,23 @@ used to check if a user has been registered
 }
 ```
 
-## login
-
 ### HTTP Request
 
-`POST https://api.effie.boo/api/users/login`
+`POST https://api.effie.boo/api/users/check`
 
 ### Body Parameters
 
 | Parameter | required | Description               |
 | --------- | -------- | ------------------------- |
 | uid       | true     | The uid from google login |
-| photoURL  | true     | The photoURL from google  |
 
 ### Header Parameters
 
-| Parameter     | required | Description              |
-| ------------- | -------- | ------------------------ |
-| Authorization | true     | access token from google |
+| Parameter     | required | Description                    |
+| ------------- | -------- | ------------------------------ |
+| Authorization | true     | access token from google login |
+
+## login
 
 ```shell
   curl "https://api.effie.boo/api/users/login" \
@@ -170,11 +153,9 @@ used to check if a user has been registered
 }
 ```
 
-## register
-
 ### HTTP Request
 
-`POST https://api.effie.boo/api/users/register`
+`POST https://api.effie.boo/api/users/login`
 
 ### Body Parameters
 
@@ -182,13 +163,14 @@ used to check if a user has been registered
 | --------- | -------- | ------------------------- |
 | uid       | true     | The uid from google login |
 | photoURL  | true     | The photoURL from google  |
-| username  | true     | The username              |
 
 ### Header Parameters
 
 | Parameter     | required | Description              |
 | ------------- | -------- | ------------------------ |
 | Authorization | true     | access token from google |
+
+## register
 
 ```shell
   curl "https://api.effie.boo/api/users/register" \
@@ -209,25 +191,217 @@ used to check if a user has been registered
 }
 ```
 
+### HTTP Request
+
+`POST https://api.effie.boo/api/users/register`
+
+### Body Parameters
+
+| Parameter | required | Description               |
+| --------- | -------- | ------------------------- |
+| uid       | true     | The uid from google login |
+| photoURL  | true     | The photoURL from google  |
+| username  | true     | The username              |
+
+### Header Parameters
+
+| Parameter     | required | Description              |
+| ------------- | -------- | ------------------------ |
+| Authorization | true     | access token from google |
+
 # links and folders
 
 ## read links or folders
+
+```shell
+curl --request GET \
+  --url https://api.effie.boo/api/directory/christojeffrey \
+  --header 'Authorization: token'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "SUCCESS",
+  "path": "/",
+  "data": {
+    "type": "folder",
+    "childrens": {
+      "test": {
+        "isPinned": false,
+        "title": "test",
+        "type": "folder",
+        "shareConfiguration": {
+          "isShared": false,
+          "sharedPrivilege": "read"
+        }
+      },
+      "itb": {
+        "isPinned": false,
+        "title": "itb",
+        "type": "folder",
+        "shareConfiguration": {
+          "isShared": false,
+          "sharedPrivilege": "read"
+        }
+      },
+      "jeffery-was-here": {
+        "isPinned": false,
+        "link": "https://bing.com",
+        "title": "jeffery-was-here",
+        "type": "link",
+        "shareConfiguration": {
+          "isShared": false,
+          "sharedPrivilege": "read"
+        }
+      },
+      "ppl": {
+        "isPinned": false,
+        "title": "ppl",
+        "type": "folder",
+        "shareConfiguration": {
+          "isShared": true,
+          "sharedPrivilege": "write"
+        }
+      },
+      "bing": {
+        "isPinned": false,
+        "link": "https://bing.com",
+        "title": "bing",
+        "type": "link",
+        "shareConfiguration": {
+          "isShared": false,
+          "sharedPrivilege": "read"
+        }
+      }
+    },
+    "shareConfiguration": {
+      "isShared": false
+    }
+  }
+}
+```
 
 ### HTTP Request
 
 `GET https://api.effie.boo/api/directory/<username>/<path>/<to>/<folder>/<or>/<link>`
 
-## write link
+### URL Parameters
+
+| Parameter | required | Description                                                   |
+| --------- | -------- | ------------------------------------------------------------- |
+| username  | true     | The username of the user which directory wants to be accessed |
+
+### Path Parameters
+
+| Parameter | required | Description                                                                 |
+| --------- | -------- | --------------------------------------------------------------------------- |
+| path      | false    | The path to the folder or link. If not given, the root directory is assumed |
+
+### Header Parameters
+
+| Parameter     | required | Description                                                    |
+| ------------- | -------- | -------------------------------------------------------------- |
+| Authorization | false    | effie token. if not given, it can only access public directory |
+
+## Create Link
+
+```shell
+  curl "https://api.effie.boo/api/directory/link" \
+  -X POST \
+  -H Authorization: token \
+  -H "Content-Type: application/json" \
+  -d '{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "isPinned": false,
+    "link": "https://bing.com",
+    "title": "bing",
+    "type": "link",
+    "shareConfiguration": {
+      "isShared": false
+    }
+  }
+}
+```
 
 ### HTTP Request
 
 `POST https://api.effie.boo/api/directory/link`
 
-## write folder
+### Body Parameters
+
+| Parameter      | required | Description                                                                                                        |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| path           | true     | The path to the folder or link                                                                                     |
+| link           | true     | The link                                                                                                           |
+| relativePath   | true     | The relative path of the link                                                                                      |
+| username       | true     | The username of the user which directory wants to be accessed and written                                          |
+| title          | false    | The title of the link. if not given, the title will be use relativePath                                            |
+| isPinned       | false    | The isPinned of the link. if not given, the isPinned will be false                                                 |
+| publicAccess   | false    | The publicPrivilege of the link. if not given, the publicAccess will be 'none'. possible values: none, read, write |
+| personalAccess | false    | Is an array of object. The object contains username and access. if not given, the personalAccess will be empty     |
+
+### Header Parameters
+
+| Parameter     | required | Description |
+| ------------- | -------- | ----------- |
+| Authorization | true     | effie token |
+
+## Create Folder
+
+```shell
+  curl "https://api.effie.boo/api/directory/folder" \
+  -X POST \
+  -H Authorization: token \
+  -H "Content-Type: application/json" \
+  -d '{"path": "/ppl", "relativePath": "test", "username": "christojeffrey"}'
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "isPinned": false,
+    "title": "test",
+    "type": "folder",
+    "shareConfiguration": {
+      "isShared": false
+    }
+  }
+}
+```
 
 ### HTTP Request
 
 `POST https://api.effie.boo/api/directory/folder`
+
+### Body Parameters
+
+| Parameter          | required | Description                                                                                        |
+| ------------------ | -------- | -------------------------------------------------------------------------------------------------- |
+| path               | true     | The path to the folder or link                                                                     |
+| relativePath       | true     | The relative path of the link                                                                      |
+| username           | true     | The username of the user which directory wants to be accessed and written                          |
+| title              | false    | The title of the link. if not given, the title will be use relativePath                            |
+| isPinned           | false    | The isPinned of the link. if not given, the isPinned will be false                                 |
+| shareConfiguration | false    | The shareConfiguration of the link. if not given, the shareConfiguration will be {isShared: false} |
+
+### Header Parameters
+
+| Parameter     | required | Description |
+| ------------- | -------- | ----------- |
+| Authorization | true     | effie token |
 
 ## update link
 
@@ -235,18 +409,147 @@ used to check if a user has been registered
 
 `PATCH https://api.effie.boo/api/directory/link`
 
+```shell
+  curl "https://api.effie.boo/api/directory/link" \
+  -X PATCH \
+  -H Authorization: token \
+  -H "Content-Type: application/json" \
+  -d '{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "isPinned": false,
+    "link": "https://bing.com",
+    "title": "bing",
+    "type": "link",
+    "shareConfiguration": {
+      "isShared": false
+    }
+  }
+}
+```
+
+### Body Parameters
+
+| Parameter          | required | Description                                                               |
+| ------------------ | -------- | ------------------------------------------------------------------------- |
+| username           | true     | The username of the user which directory wants to be accessed and written |
+| path               | true     | The path to the folder or link                                            |
+| relativePath       | true     | The relative path of the link                                             |
+| link               | false    | The new link that will replace the previous one                           |
+| title              | false    | The new title that will replace the previous one                          |
+| isPinned           | false    | The new isPinned that will replace the previous one                       |
+| shareConfiguration | false    | The new shareConfiguration that will replace the previous one             |
+
+### Header Parameters
+
+| Parameter     | required | Description |
+| ------------- | -------- | ----------- |
+| Authorization | true     | effie token |
+
 ## update folder
+
+```shell
+  curl "https://api.effie.boo/api/directory/link" \
+  -X PATCH \
+  -H Authorization: token \
+  -H "Content-Type: application/json" \
+  -d '{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "isPinned": false,
+    "link": "https://bing.com",
+    "title": "bing",
+    "type": "link",
+    "shareConfiguration": {
+      "isShared": false
+    }
+  }
+}
+```
 
 ### HTTP Request
 
 `PATCH https://api.effie.boo/api/directory/folder`
 
+### Body Parameters
+
+| Parameter          | required | Description                                                               |
+| ------------------ | -------- | ------------------------------------------------------------------------- |
+| username           | true     | The username of the user which directory wants to be accessed and written |
+| path               | true     | The path to the folder or link                                            |
+| relativePath       | true     | The relative path of the link                                             |
+| link               | false    | The new link that will replace the previous one                           |
+| title              | false    | The new title that will replace the previous one                          |
+| isPinned           | false    | The new isPinned that will replace the previous one                       |
+| shareConfiguration | false    | The new shareConfiguration that will replace the previous one             |
+
+### Header Parameters
+
+| Parameter     | required | Description |
+| ------------- | -------- | ----------- |
+| Authorization | true     | effie token |
+
 ## delete link or folder
+
+```shell
+  curl "https://api.effie.boo/api/directory/christojeffrey/ppl/bing" \
+  -X DELETE \
+  -H "Authorization: token"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": "SUCCESS",
+  "data": {
+    "isPinned": false,
+    "link": "https://bing.com",
+    "title": "bing",
+    "type": "link",
+    "shareConfiguration": {
+      "isShared": false
+    }
+  }
+}
+```
 
 ### HTTP Request
 
 `DELETE https://api.effie.boo/api/directory/<username>/<path>/<to>/<folder>/<or>/<link>`
 
-```
+### URL Parameters
 
+| Parameter | required | Description                                                               |
+| --------- | -------- | ------------------------------------------------------------------------- |
+| username  | true     | The username of the user which directory wants to be accessed and written |
+| path      | true     | The path to the folder or link including relativePath                     |
+
+### Header Parameters
+
+| Parameter     | required | Description |
+| ------------- | -------- | ----------- |
+| Authorization | true     | effie token |
+
+# error
+
+will return below in general
+
+```json
+{
+  "status": "ERROR",
+  "message": "error message"
+}
 ```
