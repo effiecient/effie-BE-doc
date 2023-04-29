@@ -316,13 +316,10 @@
             <a href="#example-introduction" class="toc-h1 toc-link" data-title="example Introduction">example Introduction</a>
           </li>
           <li>
-            <a href="#example-authentication" class="toc-h1 toc-link" data-title="example Authentication">example Authentication</a>
-          </li>
-          <li>
             <a href="#auth" class="toc-h1 toc-link" data-title="Auth">Auth</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#check-auth" class="toc-h2 toc-link" data-title="check auth">check auth</a>
+                    <a href="#check-auth" class="toc-h2 toc-link" data-title="Check Auth">Check Auth</a>
                   </li>
               </ul>
           </li>
@@ -330,22 +327,19 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#check" class="toc-h2 toc-link" data-title="check">check</a>
+                    <a href="#check-google-account" class="toc-h2 toc-link" data-title="Check Google Account">Check Google Account</a>
                   </li>
                   <li>
-                    <a href="#login" class="toc-h2 toc-link" data-title="login">login</a>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
                   </li>
                   <li>
-                    <a href="#register" class="toc-h2 toc-link" data-title="register">register</a>
+                    <a href="#register" class="toc-h2 toc-link" data-title="Register">Register</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#links-and-folders" class="toc-h1 toc-link" data-title="links and folders">links and folders</a>
+            <a href="#links-and-folders" class="toc-h1 toc-link" data-title="Links and Folders">Links and Folders</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#read-links-or-folders" class="toc-h2 toc-link" data-title="read links or folders">read links or folders</a>
-                  </li>
                   <li>
                     <a href="#create-link" class="toc-h2 toc-link" data-title="Create Link">Create Link</a>
                   </li>
@@ -353,18 +347,18 @@
                     <a href="#create-folder" class="toc-h2 toc-link" data-title="Create Folder">Create Folder</a>
                   </li>
                   <li>
-                    <a href="#update-link" class="toc-h2 toc-link" data-title="update link">update link</a>
+                    <a href="#read-links-or-folders" class="toc-h2 toc-link" data-title="Read Links or Folders">Read Links or Folders</a>
                   </li>
                   <li>
-                    <a href="#update-folder" class="toc-h2 toc-link" data-title="update folder">update folder</a>
+                    <a href="#update-link" class="toc-h2 toc-link" data-title="Update Link">Update Link</a>
+                  </li>
+                  <li>
+                    <a href="#update-folder" class="toc-h2 toc-link" data-title="Update Folder">Update Folder</a>
                   </li>
                   <li>
                     <a href="#delete-link-or-folder" class="toc-h2 toc-link" data-title="delete link or folder">delete link or folder</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#error" class="toc-h1 toc-link" data-title="error">error</a>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
@@ -379,58 +373,31 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='example-introduction'>example Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>documentation for the Effie API
+<a href="https://effie.boo">effie</a></p>
+<h1 id='auth'>Auth</h1><h2 id='check-auth'>Check Auth</h2>
+<p>check if effie token is valid. to get metadata about the user</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='example-authentication'>example Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>example request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='auth'>Auth</h1><h2 id='check-auth'>check auth</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.effie.boo/api/auth"</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"token": "token"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.effie.boo/api/auth"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: auth"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
-
-<p>if success, return username with photoURL</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"photoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.effie.boo/api/users/username/photo"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>if false, return message</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"message"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"photoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.effie.boo/api/users/username/photo"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://api.effie.boo/api/auth</code></p>
-<h3 id='body-parameters'>Body Parameters</h3>
+<h3 id='header-parameters'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -439,14 +406,16 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
+<td>Authorization</td>
 <td>true</td>
-<td>The effie token to check. given from login or register</td>
+<td>effie token</td>
 </tr>
 </tbody></table>
-<h1 id='users'>Users</h1><h2 id='check'>check</h2>
-<p>used to check if a user has been registered</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/users/check"</span> <span class="se">\</span>
+<h1 id='users'>Users</h1><h2 id='check-google-account'>Check Google Account</h2>
+<blockquote>
+<p>example request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/users/check-google"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: auth"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -458,26 +427,15 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"isRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nl">"isRegistered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://api.effie.boo/api/users/check</code></p>
-<h3 id='body-parameters-2'>Body Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>uid</td>
-<td>true</td>
-<td>The uid from google login</td>
-</tr>
-</tbody></table>
-<h3 id='header-parameters'>Header Parameters</h3>
+</span></code></pre></div>
+<p>used to check if a google account is registered with effie</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.effie.boo/api/users/check-google</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -491,24 +449,58 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>access token from google login</td>
 </tr>
 </tbody></table>
-<h2 id='login'>login</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/users/login"</span> <span class="se">\</span>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td>true</td>
+<td>The uid from google login</td>
+</tr>
+</tbody></table>
+<h2 id='login'>Login</h2>
+<blockquote>
+<p>example request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/users/login-google"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: auth"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"uid": "uid", "photoURL": "photoURL"}'</span>
+  <span class="nt">-d</span> <span class="s1">'{"uid": "uid"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effieToken"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Login successful"</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effieToken"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"photoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.effie.boo/api/users/username/photo"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://api.effie.boo/api/users/login</code></p>
-<h3 id='body-parameters-3'>Body Parameters</h3>
+<p><code>POST https://api.effie.boo/api/users/login-google</code></p>
+<h3 id='header-parameters-3'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>true</td>
+<td>access token from google</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -527,7 +519,30 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>The photoURL from google</td>
 </tr>
 </tbody></table>
-<h3 id='header-parameters-2'>Header Parameters</h3>
+<h2 id='register'>Register</h2>
+<blockquote>
+<p>example request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/users/register"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: auth"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"uid": "uid", "username": "username"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effieToken"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"photoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.effie.boo/api/users/username/photo"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.effie.boo/api/users/register</code></p>
+<h3 id='header-parameters-4'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -541,24 +556,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>access token from google</td>
 </tr>
 </tbody></table>
-<h2 id='register'>register</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/users/register"</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: auth"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"uid": "uid", "photoURL": "photoURL", "username": "username"}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effieToken"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User registered"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST https://api.effie.boo/api/users/register</code></p>
-<h3 id='body-parameters-4'>Body Parameters</h3>
+<h3 id='body-parameters-3'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -582,154 +580,39 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>The username</td>
 </tr>
 </tbody></table>
-<h3 id='header-parameters-3'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>true</td>
-<td>access token from google</td>
-</tr>
-</tbody></table>
-<h1 id='links-and-folders'>links and folders</h1><h2 id='read-links-or-folders'>read links or folders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> https://api.effie.boo/api/directory/christojeffrey <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Authorization: token'</span>
-</code></pre></div>
+<h1 id='links-and-folders'>Links and Folders</h1><h2 id='create-link'>Create Link</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>example request creating &#39;ppl&#39; link in &#39;/itb&#39; directory</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"childrens"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sharedPrivilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"itb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"itb"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sharedPrivilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"jeffery-was-here"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bing.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeffery-was-here"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sharedPrivilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"ppl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ppl"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sharedPrivilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"write"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"bing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bing.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bing"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sharedPrivilege"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.effie.boo/api/directory/&lt;username&gt;/&lt;path&gt;/&lt;to&gt;/&lt;folder&gt;/&lt;or&gt;/&lt;link&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>username</td>
-<td>true</td>
-<td>The username of the user which directory wants to be accessed</td>
-</tr>
-</tbody></table>
-<h3 id='path-parameters'>Path Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>path</td>
-<td>false</td>
-<td>The path to the folder or link. If not given, the root directory is assumed</td>
-</tr>
-</tbody></table>
-<h3 id='header-parameters-4'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>false</td>
-<td>effie token. if not given, it can only access public directory</td>
-</tr>
-</tbody></table>
-<h2 id='create-link'>Create Link</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/link"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/link"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> Authorization: token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'</span>
+  <span class="nt">-d</span> <span class="s1">'{"path": "/itb", "relativePath": "ppl", "username": "christojeffrey", "link": "https://google.com"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bing.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bing"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+</span></code></pre></div><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://api.effie.boo/api/directory/link</code></p>
-<h3 id='body-parameters-5'>Body Parameters</h3>
+<h3 id='header-parameters-5'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>true</td>
+<td>effie token</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-4'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -743,9 +626,86 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>The path to the folder or link</td>
 </tr>
 <tr>
+<td>relativePath</td>
+<td>true</td>
+<td>The relative path of the link</td>
+</tr>
+<tr>
+<td>username</td>
+<td>true</td>
+<td>The username of the user which directory wants to be accessed and written</td>
+</tr>
+<tr>
 <td>link</td>
 <td>true</td>
 <td>The link</td>
+</tr>
+<tr>
+<td>title</td>
+<td>false</td>
+<td>The title of the link. if not given, the title will be use relativePath</td>
+</tr>
+<tr>
+<td>isPinned</td>
+<td>false</td>
+<td>The isPinned of the link. if not given, the isPinned will be false</td>
+</tr>
+<tr>
+<td>publicAccess</td>
+<td>false</td>
+<td>The publicPrivilege of the link. if not given, the publicAccess will be &#39;none&#39;. possible values: none, read, write</td>
+</tr>
+<tr>
+<td>personalAccess</td>
+<td>false</td>
+<td>Is an array of object. The object contains username and access. if not given, the personalAccess will be empty</td>
+</tr>
+</tbody></table>
+<h2 id='create-folder'>Create Folder</h2>
+<blockquote>
+<p>example request creating &#39;ppl&#39; folder in &#39;/itb&#39; directory</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/folder"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> Authorization: token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"path": "/itb", "relativePath": "ppl", "username": "christojeffrey"}'</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://api.effie.boo/api/directory/folder</code></p>
+<h3 id='header-parameters-6'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>true</td>
+<td>effie token</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-5'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>path</td>
+<td>true</td>
+<td>The path to the folder or link</td>
 </tr>
 <tr>
 <td>relativePath</td>
@@ -778,26 +738,13 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>Is an array of object. The object contains username and access. if not given, the personalAccess will be empty</td>
 </tr>
 </tbody></table>
-<h3 id='header-parameters-5'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>true</td>
-<td>effie token</td>
-</tr>
-</tbody></table>
-<h2 id='create-folder'>Create Folder</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/folder"</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> Authorization: token <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"path": "/ppl", "relativePath": "test", "username": "christojeffrey"}'</span>
-
+<h2 id='read-links-or-folders'>Read Links or Folders</h2>
+<blockquote>
+<p>example request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
+  <span class="nt">--url</span> https://api.effie.boo/api/directory/christojeffrey/itb/ppl <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: token'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -805,56 +752,34 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/itb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relativePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ppl"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ppl"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-12T14:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-12T14:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastModifiedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christojeffrey"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicAccess"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"personalAccess"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"relativePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"figma"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-12T14:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-12T14:00:00.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastModifiedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christojeffrey"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"publicAccess"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"personalAccess"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
-<p><code>POST https://api.effie.boo/api/directory/folder</code></p>
-<h3 id='body-parameters-6'>Body Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>path</td>
-<td>true</td>
-<td>The path to the folder or link</td>
-</tr>
-<tr>
-<td>relativePath</td>
-<td>true</td>
-<td>The relative path of the link</td>
-</tr>
-<tr>
-<td>username</td>
-<td>true</td>
-<td>The username of the user which directory wants to be accessed and written</td>
-</tr>
-<tr>
-<td>title</td>
-<td>false</td>
-<td>The title of the link. if not given, the title will be use relativePath</td>
-</tr>
-<tr>
-<td>isPinned</td>
-<td>false</td>
-<td>The isPinned of the link. if not given, the isPinned will be false</td>
-</tr>
-<tr>
-<td>shareConfiguration</td>
-<td>false</td>
-<td>The shareConfiguration of the link. if not given, the shareConfiguration will be {isShared: false}</td>
-</tr>
-</tbody></table>
-<h3 id='header-parameters-6'>Header Parameters</h3>
+<p><code>GET https://api.effie.boo/api/directory/&lt;username&gt;/&lt;path&gt;/&lt;to&gt;/&lt;folder&gt;/&lt;or&gt;/&lt;link&gt;</code></p>
+<h3 id='header-parameters-7'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -864,11 +789,30 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>Authorization</td>
-<td>true</td>
-<td>effie token</td>
+<td>false</td>
+<td>effie token. if not given, it can only access public directory</td>
 </tr>
 </tbody></table>
-<h2 id='update-link'>update link</h2><h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>true</td>
+<td>The username of the user which directory wants to be accessed</td>
+</tr>
+<tr>
+<td>path</td>
+<td>false</td>
+<td>The path to the folder or link. If not given, the root directory is assumed</td>
+</tr>
+</tbody></table>
+<h2 id='update-link'>Update Link</h2><h3 id='http-request-8'>HTTP Request</h3>
 <p><code>PATCH https://api.effie.boo/api/directory/link</code></p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/link"</span> <span class="se">\</span>
   <span class="nt">-X</span> PATCH <span class="se">\</span>
@@ -880,18 +824,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bing.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bing"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='body-parameters-7'>Body Parameters</h3>
+</span></code></pre></div><h3 id='body-parameters-6'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -930,90 +865,14 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>The new isPinned that will replace the previous one</td>
 </tr>
 <tr>
-<td>shareConfiguration</td>
+<td>publicAccess</td>
 <td>false</td>
-<td>The new shareConfiguration that will replace the previous one</td>
-</tr>
-</tbody></table>
-<h3 id='header-parameters-7'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>true</td>
-<td>effie token</td>
-</tr>
-</tbody></table>
-<h2 id='update-folder'>update folder</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/link"</span> <span class="se">\</span>
-  <span class="nt">-X</span> PATCH <span class="se">\</span>
-  <span class="nt">-H</span> Authorization: token <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bing.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bing"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
-<p><code>PATCH https://api.effie.boo/api/directory/folder</code></p>
-<h3 id='body-parameters-8'>Body Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>username</td>
-<td>true</td>
-<td>The username of the user which directory wants to be accessed and written</td>
+<td>The new publicPrivilege that will replace the previous one</td>
 </tr>
 <tr>
-<td>path</td>
-<td>true</td>
-<td>The path to the folder or link</td>
-</tr>
-<tr>
-<td>relativePath</td>
-<td>true</td>
-<td>The relative path of the link</td>
-</tr>
-<tr>
-<td>link</td>
+<td>personalAccess</td>
 <td>false</td>
-<td>The new link that will replace the previous one</td>
-</tr>
-<tr>
-<td>title</td>
-<td>false</td>
-<td>The new title that will replace the previous one</td>
-</tr>
-<tr>
-<td>isPinned</td>
-<td>false</td>
-<td>The new isPinned that will replace the previous one</td>
-</tr>
-<tr>
-<td>shareConfiguration</td>
-<td>false</td>
-<td>The new shareConfiguration that will replace the previous one</td>
+<td>The new personalAccess that will replace the previous one. only value thats inside the array will be updated</td>
 </tr>
 </tbody></table>
 <h3 id='header-parameters-8'>Header Parameters</h3>
@@ -1030,6 +889,83 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>effie token</td>
 </tr>
 </tbody></table>
+<h2 id='update-folder'>Update Folder</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/link"</span> <span class="se">\</span>
+  <span class="nt">-X</span> PATCH <span class="se">\</span>
+  <span class="nt">-H</span> Authorization: token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
+<p><code>PATCH https://api.effie.boo/api/directory/folder</code></p>
+<h3 id='header-parameters-9'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>true</td>
+<td>effie token</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-7'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>true</td>
+<td>The username of the user which directory wants to be accessed and written</td>
+</tr>
+<tr>
+<td>path</td>
+<td>true</td>
+<td>The path to the folder or link</td>
+</tr>
+<tr>
+<td>relativePath</td>
+<td>true</td>
+<td>The relative path of the link</td>
+</tr>
+<tr>
+<td>link</td>
+<td>false</td>
+<td>The new link that will replace the previous one</td>
+</tr>
+<tr>
+<td>title</td>
+<td>false</td>
+<td>The new title that will replace the previous one</td>
+</tr>
+<tr>
+<td>isPinned</td>
+<td>false</td>
+<td>The new isPinned that will replace the previous one</td>
+</tr>
+<tr>
+<td>publicAccess</td>
+<td>false</td>
+<td>The new publicPrivilege that will replace the previous one</td>
+</tr>
+<tr>
+<td>personalAccess</td>
+<td>false</td>
+<td>The new personalAccess that will replace the previous one</td>
+</tr>
+</tbody></table>
 <h2 id='delete-link-or-folder'>delete link or folder</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/christojeffrey/ppl/bing"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
@@ -1038,19 +974,24 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bing.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bing"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"shareConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"isShared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-10'>HTTP Request</h3>
 <p><code>DELETE https://api.effie.boo/api/directory/&lt;username&gt;/&lt;path&gt;/&lt;to&gt;/&lt;folder&gt;/&lt;or&gt;/&lt;link&gt;</code></p>
+<h3 id='header-parameters-10'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>true</td>
+<td>effie token</td>
+</tr>
+</tbody></table>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1070,31 +1011,17 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>The path to the folder or link including relativePath</td>
 </tr>
 </tbody></table>
-<h3 id='header-parameters-9'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>true</td>
-<td>effie token</td>
-</tr>
-</tbody></table>
-<h1 id='error'>error</h1>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
 <p>will return below in general</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERROR"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error message"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
+</span></code></pre></div>
 <p>The Kittn API uses the following error codes:</p>
 
 <table><thead>
