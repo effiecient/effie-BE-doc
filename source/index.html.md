@@ -283,7 +283,7 @@ used to check if a google account is registered with effie
 
 ```shell
 curl --request GET \
-  --url https://api.effie.boo/api/directory/christojeffrey/itb/ppl \
+  --url https://api.effie.boo/api/directory/christojeffrey/itb \
   --header 'Authorization: token'
 ```
 
@@ -293,31 +293,34 @@ curl --request GET \
 {
   "status": "SUCCESS",
   "data": {
-    "path": "/itb",
-    "relativePath": "ppl",
-    "type": "folder",
+    "createdAt": "2023-04-27T17:00:00.289Z",
+    "personalAccess": [],
     "isPinned": false,
-    "title": "ppl",
-    "createdOn": "2020-12-12T14:00:00.000Z",
-    "lastModified": "2020-12-12T14:00:00.000Z",
+    "publicAccess": "none",
     "lastModifiedBy": "christojeffrey",
     "linkCount": 0,
+    "id": "vKKx8BtpZACWw5yfVfgx",
+    "lastModified": "2023-04-30T06:17:10.104Z",
+    "type": "folder",
+    "title": "itb",
     "folderCount": 1,
-    "publicAccess": "none",
-    "personalAccess": [],
     "children": [
       {
-        "relativePath": "figma",
-        "type": "folder",
+        "createdAt": "2023-04-27T17:00:00.203Z",
+        "personalAccess": [],
         "isPinned": false,
-        "title": "test",
-        "createdOn": "2020-12-12T14:00:00.000Z",
-        "lastModified": "2020-12-12T14:00:00.000Z",
-        "lastModifiedBy": "christojeffrey",
         "publicAccess": "none",
-        "personalAccess": []
+        "lastModifiedBy": "christojeffrey",
+        "linkCount": 1,
+        "id": "plKnKDZzTKy2aLNpYSHt",
+        "lastModified": "2023-04-30T06:17:10.178Z",
+        "type": "folder",
+        "title": "ppl",
+        "folderCount": 0,
+        "relativePath": "ppl"
       }
-    ]
+    ],
+    "path": "/itb"
   }
 }
 ```
@@ -363,16 +366,18 @@ curl --request GET \
 
 ### Body Parameters
 
-| Parameter      | required | Description                                                                                                  |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| username       | true     | The username of the user which directory wants to be accessed and written                                    |
-| path           | true     | The path to the folder or link                                                                               |
-| relativePath   | true     | The relative path of the link                                                                                |
-| link           | false    | The new link that will replace the previous one                                                              |
-| title          | false    | The new title that will replace the previous one                                                             |
-| isPinned       | false    | The new isPinned that will replace the previous one                                                          |
-| publicAccess   | false    | The new publicPrivilege that will replace the previous one                                                   |
-| personalAccess | false    | The new personalAccess that will replace the previous one. only value thats inside the array will be updated |
+| Parameter       | required | Description                                                                                                  |
+| --------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
+| username        | true     | The username of the user which directory wants to be accessed and written                                    |
+| path            | true     | The path to the folder or link                                                                               |
+| relativePath    | true     | The relative path of the link                                                                                |
+| link            | false    | The new link that will replace the previous one                                                              |
+| title           | false    | The new title that will replace the previous one                                                             |
+| isPinned        | false    | The new isPinned that will replace the previous one                                                          |
+| publicAccess    | false    | The new publicPrivilege that will replace the previous one                                                   |
+| personalAccess  | false    | The new personalAccess that will replace the previous one. only value thats inside the array will be updated |
+| newPath         | false    | The new path that will replace the previous one                                                              |
+| newRelativePath | false    | The new relativePath that will replace the previous one                                                      |
 
 ### Header Parameters
 
@@ -410,16 +415,17 @@ curl --request GET \
 
 ### Body Parameters
 
-| Parameter      | required | Description                                                               |
-| -------------- | -------- | ------------------------------------------------------------------------- |
-| username       | true     | The username of the user which directory wants to be accessed and written |
-| path           | true     | The path to the folder or link                                            |
-| relativePath   | true     | The relative path of the link                                             |
-| link           | false    | The new link that will replace the previous one                           |
-| title          | false    | The new title that will replace the previous one                          |
-| isPinned       | false    | The new isPinned that will replace the previous one                       |
-| publicAccess   | false    | The new publicPrivilege that will replace the previous one                |
-| personalAccess | false    | The new personalAccess that will replace the previous one                 |
+| Parameter       | required | Description                                                               |
+| --------------- | -------- | ------------------------------------------------------------------------- |
+| username        | true     | The username of the user which directory wants to be accessed and written |
+| path            | true     | The path to the folder or link                                            |
+| relativePath    | true     | The relative path of the link                                             |
+| title           | false    | The new title that will replace the previous one                          |
+| isPinned        | false    | The new isPinned that will replace the previous one                       |
+| publicAccess    | false    | The new publicPrivilege that will replace the previous one                |
+| personalAccess  | false    | The new personalAccess that will replace the previous one                 |
+| newPath         | false    | The new path that will replace the previous one                           |
+| newRelativePath | false    | The new relativePath that will replace the previous one                   |
 
 ## delete link or folder
 
