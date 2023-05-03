@@ -151,7 +151,7 @@ used to check if a google account is registered with effie
 > example request
 
 ```shell
-  curl "https://api.effie.boo/api/users/register" \
+  curl "https://api.effie.boo/api/users/register-google" \
   -X POST \
   -H "Authorization: auth" \
   -H "Content-Type: application/json" \
@@ -173,7 +173,7 @@ used to check if a google account is registered with effie
 
 ### HTTP Request
 
-`POST https://api.effie.boo/api/users/register`
+`POST https://api.effie.boo/api/users/register-google`
 
 ### Header Parameters
 
