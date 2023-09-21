@@ -330,10 +330,10 @@
                     <a href="#check-google-account" class="toc-h2 toc-link" data-title="Check Google Account">Check Google Account</a>
                   </li>
                   <li>
-                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                    <a href="#login-google" class="toc-h2 toc-link" data-title="Login Google">Login Google</a>
                   </li>
                   <li>
-                    <a href="#register" class="toc-h2 toc-link" data-title="Register">Register</a>
+                    <a href="#register-google" class="toc-h2 toc-link" data-title="Register Google">Register Google</a>
                   </li>
               </ul>
           </li>
@@ -350,13 +350,13 @@
                     <a href="#read-links-or-folders" class="toc-h2 toc-link" data-title="Read Links or Folders">Read Links or Folders</a>
                   </li>
                   <li>
-                    <a href="#update-link" class="toc-h2 toc-link" data-title="Update Link">Update Link</a>
+                    <a href="#update-link-or-folder" class="toc-h2 toc-link" data-title="Update Link or Folder">Update Link or Folder</a>
                   </li>
                   <li>
-                    <a href="#update-folder" class="toc-h2 toc-link" data-title="Update Folder">Update Folder</a>
+                    <a href="#move-link-or-folder" class="toc-h2 toc-link" data-title="Move Link or Folder">Move Link or Folder</a>
                   </li>
                   <li>
-                    <a href="#delete-link-or-folder" class="toc-h2 toc-link" data-title="delete link or folder">delete link or folder</a>
+                    <a href="#delete-link-or-folder" class="toc-h2 toc-link" data-title="Delete Link or Folder">Delete Link or Folder</a>
                   </li>
               </ul>
           </li>
@@ -376,7 +376,7 @@
 <p>documentation for the Effie API
 <a href="https://effie.boo">effie</a></p>
 <h1 id='auth'>Auth</h1><h2 id='check-auth'>Check Auth</h2>
-<p>check if effie token is valid. to get metadata about the user</p>
+<p>check if effie token is valid. to get metadata about the user. will give new updated token with new expiry date. So this endpoint is also used to update token. will update photoURL too.</p>
 
 <blockquote>
 <p>example request</p>
@@ -392,7 +392,8 @@
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"photoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.effie.boo/api/users/username/photo"</span><span class="w">
+    </span><span class="nl">"photoURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.effie.boo/api/users/username/photo"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
@@ -412,6 +413,8 @@
 </tr>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='check-google-account'>Check Google Account</h2>
+<p>check if the uid given in the body is registered with effie.</p>
+
 <blockquote>
 <p>example request</p>
 </blockquote>
@@ -463,7 +466,9 @@
 <td>The uid from google login</td>
 </tr>
 </tbody></table>
-<h2 id='login'>Login</h2>
+<h2 id='login-google'>Login Google</h2>
+<p>login to effie using google account</p>
+
 <blockquote>
 <p>example request</p>
 </blockquote>
@@ -513,13 +518,10 @@
 <td>true</td>
 <td>The uid from google login</td>
 </tr>
-<tr>
-<td>photoURL</td>
-<td>true</td>
-<td>The photoURL from google</td>
-</tr>
 </tbody></table>
-<h2 id='register'>Register</h2>
+<h2 id='register-google'>Register Google</h2>
+<p>register to effie using google account</p>
+
 <blockquote>
 <p>example request</p>
 </blockquote>
@@ -568,11 +570,6 @@
 <td>uid</td>
 <td>true</td>
 <td>The uid from google login</td>
-</tr>
-<tr>
-<td>photoURL</td>
-<td>true</td>
-<td>The photoURL from google</td>
 </tr>
 <tr>
 <td>username</td>
@@ -655,11 +652,6 @@
 <td>false</td>
 <td>The publicPrivilege of the link. if not given, the publicAccess will be &#39;none&#39;. possible values: none, read, write</td>
 </tr>
-<tr>
-<td>personalAccess</td>
-<td>false</td>
-<td>Is an array of object. The object contains username and access. if not given, the personalAccess will be empty</td>
-</tr>
 </tbody></table>
 <h2 id='create-folder'>Create Folder</h2>
 <blockquote>
@@ -732,11 +724,6 @@
 <td>false</td>
 <td>The publicPrivilege of the link. if not given, the publicAccess will be &#39;none&#39;. possible values: none, read, write</td>
 </tr>
-<tr>
-<td>personalAccess</td>
-<td>false</td>
-<td>Is an array of object. The object contains username and access. if not given, the personalAccess will be empty</td>
-</tr>
 </tbody></table>
 <h2 id='read-links-or-folders'>Read Links or Folders</h2>
 <blockquote>
@@ -752,34 +739,49 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-27T17:00:00.289Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-09T11:05:24.824Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"personalAccess"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"publicAccess"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lastModifiedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christojeffrey"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linkCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vKKx8BtpZACWw5yfVfgx"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-30T06:17:10.104Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BKIeWzFTQKE186zG51Vg"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"itb"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"folderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-27T17:00:00.203Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-05T16:05:01.190Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"personalAccess"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"publicAccess"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"lastModifiedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christojeffrey"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"linkCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plKnKDZzTKy2aLNpYSHt"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-30T06:17:10.178Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pu1eQdkNLqBqXVjwjtZS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-19T15:30:32.279Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ppl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"archived"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"folderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"relativePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"archived"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-21T06:40:33.268Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"personalAccess"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"isPinned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"publicAccess"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastModifiedBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"christojeffrey"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JBlXqP4g2NC9FExdzR85"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-20T10:51:43.794Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effie"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"folderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"relativePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ppl"</span><span class="w">
+        </span><span class="nl">"relativePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"effie"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/itb"</span><span class="w">
+    </span><span class="nl">"lastModified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-21T20:32:18.443Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"folderCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"relativePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-7'>HTTP Request</h3>
@@ -817,13 +819,13 @@
 <td>The path to the folder or link. If not given, the root directory is assumed</td>
 </tr>
 </tbody></table>
-<h2 id='update-link'>Update Link</h2><h3 id='http-request-8'>HTTP Request</h3>
-<p><code>PATCH https://api.effie.boo/api/directory/link</code></p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/link"</span> <span class="se">\</span>
+<h2 id='update-link-or-folder'>Update Link or Folder</h2><h3 id='http-request-8'>HTTP Request</h3>
+<p><code>PATCH https://api.effie.boo/api/directory/update/&lt;username&gt;/&lt;location&gt;</code></p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/christojeffrey/tes"</span> <span class="se">\</span>
   <span class="nt">-X</span> PATCH <span class="se">\</span>
   <span class="nt">-H</span> Authorization: token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'</span>
+  <span class="nt">-d</span> <span class="s1">'{"newRelativePath": "testing"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -839,21 +841,6 @@
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>true</td>
-<td>The username of the user which directory wants to be accessed and written</td>
-</tr>
-<tr>
-<td>path</td>
-<td>true</td>
-<td>The path to the folder or link</td>
-</tr>
-<tr>
-<td>relativePath</td>
-<td>true</td>
-<td>The relative path of the link</td>
-</tr>
 <tr>
 <td>link</td>
 <td>false</td>
@@ -875,16 +862,6 @@
 <td>The new publicPrivilege that will replace the previous one</td>
 </tr>
 <tr>
-<td>personalAccess</td>
-<td>false</td>
-<td>The new personalAccess that will replace the previous one. only value thats inside the array will be updated</td>
-</tr>
-<tr>
-<td>newPath</td>
-<td>false</td>
-<td>The new path that will replace the previous one</td>
-</tr>
-<tr>
 <td>newRelativePath</td>
 <td>false</td>
 <td>The new relativePath that will replace the previous one</td>
@@ -904,20 +881,27 @@
 <td>effie token</td>
 </tr>
 </tbody></table>
-<h2 id='update-folder'>Update Folder</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/link"</span> <span class="se">\</span>
+<h2 id='move-link-or-folder'>Move Link or Folder</h2><h3 id='http-request-9'>HTTP Request</h3>
+<p><code>PATCH https://api.effie.boo/api/directory/update/&lt;username&gt;/&lt;location&gt;</code></p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/christojeffrey/tes"</span> <span class="se">\</span>
   <span class="nt">-X</span> PATCH <span class="se">\</span>
   <span class="nt">-H</span> Authorization: token <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-9'>HTTP Request</h3>
-<p><code>PATCH https://api.effie.boo/api/directory/folder</code></p>
+  <span class="nt">-d</span> <span class="s1">'{"newPath": "/archived"}'</span>
+</code></pre></div><h3 id='body-parameters-7'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newPath</td>
+<td>true</td>
+<td>The new path</td>
+</tr>
+</tbody></table>
 <h3 id='header-parameters-9'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -932,61 +916,7 @@
 <td>effie token</td>
 </tr>
 </tbody></table>
-<h3 id='body-parameters-7'>Body Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>username</td>
-<td>true</td>
-<td>The username of the user which directory wants to be accessed and written</td>
-</tr>
-<tr>
-<td>path</td>
-<td>true</td>
-<td>The path to the folder or link</td>
-</tr>
-<tr>
-<td>relativePath</td>
-<td>true</td>
-<td>The relative path of the link</td>
-</tr>
-<tr>
-<td>title</td>
-<td>false</td>
-<td>The new title that will replace the previous one</td>
-</tr>
-<tr>
-<td>isPinned</td>
-<td>false</td>
-<td>The new isPinned that will replace the previous one</td>
-</tr>
-<tr>
-<td>publicAccess</td>
-<td>false</td>
-<td>The new publicPrivilege that will replace the previous one</td>
-</tr>
-<tr>
-<td>personalAccess</td>
-<td>false</td>
-<td>The new personalAccess that will replace the previous one</td>
-</tr>
-<tr>
-<td>newPath</td>
-<td>false</td>
-<td>The new path that will replace the previous one</td>
-</tr>
-<tr>
-<td>newRelativePath</td>
-<td>false</td>
-<td>The new relativePath that will replace the previous one</td>
-</tr>
-</tbody></table>
-<h2 id='delete-link-or-folder'>delete link or folder</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/christojeffrey/ppl/bing"</span> <span class="se">\</span>
+<h2 id='delete-link-or-folder'>Delete Link or Folder</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://api.effie.boo/api/directory/christojeffrey/ppl/bing"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: token"</span>
 </code></pre></div>
