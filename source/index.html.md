@@ -28,7 +28,7 @@ documentation for the Effie API
 
 ## Check Auth
 
-check if effie token is valid. to get metadata about the user
+check if effie token is valid. to get metadata about the user. will give new updated token with new expiry date. So this endpoint is also used to update token. will update photoURL too.
 
 > example request
 
@@ -45,7 +45,8 @@ curl "https://api.effie.boo/api/auth" \
   "status": "SUCCESS",
   "data": {
     "username": "username",
-    "photoURL": "https://cdn.effie.boo/api/users/username/photo"
+    "photoURL": "https://cdn.effie.boo/api/users/username/photo",
+    "token": "token"
   }
 }
 ```
@@ -63,6 +64,8 @@ curl "https://api.effie.boo/api/auth" \
 # Users
 
 ## Check Google Account
+
+check if the uid given in the body is registered with effie.
 
 > example request
 
@@ -104,7 +107,9 @@ used to check if a google account is registered with effie
 | --------- | -------- | ------------------------- |
 | uid       | true     | The uid from google login |
 
-## Login
+## Login Google
+
+login to effie using google account
 
 > example request
 
@@ -144,9 +149,10 @@ used to check if a google account is registered with effie
 | Parameter | required | Description               |
 | --------- | -------- | ------------------------- |
 | uid       | true     | The uid from google login |
-| photoURL  | true     | The photoURL from google  |
 
-## Register
+## Register Google
+
+register to effie using google account
 
 > example request
 
@@ -186,7 +192,6 @@ used to check if a google account is registered with effie
 | Parameter | required | Description               |
 | --------- | -------- | ------------------------- |
 | uid       | true     | The uid from google login |
-| photoURL  | true     | The photoURL from google  |
 | username  | true     | The username              |
 
 # Links and Folders
@@ -223,16 +228,15 @@ used to check if a google account is registered with effie
 
 ### Body Parameters
 
-| Parameter      | required | Description                                                                                                        |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
-| path           | true     | The path to the folder or link                                                                                     |
-| relativePath   | true     | The relative path of the link                                                                                      |
-| username       | true     | The username of the user which directory wants to be accessed and written                                          |
-| link           | true     | The link                                                                                                           |
-| title          | false    | The title of the link. if not given, the title will be use relativePath                                            |
-| isPinned       | false    | The isPinned of the link. if not given, the isPinned will be false                                                 |
-| publicAccess   | false    | The publicPrivilege of the link. if not given, the publicAccess will be 'none'. possible values: none, read, write |
-| personalAccess | false    | Is an array of object. The object contains username and access. if not given, the personalAccess will be empty     |
+| Parameter    | required | Description                                                                                                        |
+| ------------ | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| path         | true     | The path to the folder or link                                                                                     |
+| relativePath | true     | The relative path of the link                                                                                      |
+| username     | true     | The username of the user which directory wants to be accessed and written                                          |
+| link         | true     | The link                                                                                                           |
+| title        | false    | The title of the link. if not given, the title will be use relativePath                                            |
+| isPinned     | false    | The isPinned of the link. if not given, the isPinned will be false                                                 |
+| publicAccess | false    | The publicPrivilege of the link. if not given, the publicAccess will be 'none'. possible values: none, read, write |
 
 ## Create Folder
 
@@ -267,15 +271,14 @@ used to check if a google account is registered with effie
 
 ### Body Parameters
 
-| Parameter      | required | Description                                                                                                        |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
-| path           | true     | The path to the folder or link                                                                                     |
-| relativePath   | true     | The relative path of the link                                                                                      |
-| username       | true     | The username of the user which directory wants to be accessed and written                                          |
-| title          | false    | The title of the link. if not given, the title will be use relativePath                                            |
-| isPinned       | false    | The isPinned of the link. if not given, the isPinned will be false                                                 |
-| publicAccess   | false    | The publicPrivilege of the link. if not given, the publicAccess will be 'none'. possible values: none, read, write |
-| personalAccess | false    | Is an array of object. The object contains username and access. if not given, the personalAccess will be empty     |
+| Parameter    | required | Description                                                                                                        |
+| ------------ | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| path         | true     | The path to the folder or link                                                                                     |
+| relativePath | true     | The relative path of the link                                                                                      |
+| username     | true     | The username of the user which directory wants to be accessed and written                                          |
+| title        | false    | The title of the link. if not given, the title will be use relativePath                                            |
+| isPinned     | false    | The isPinned of the link. if not given, the isPinned will be false                                                 |
+| publicAccess | false    | The publicPrivilege of the link. if not given, the publicAccess will be 'none'. possible values: none, read, write |
 
 ## Read Links or Folders
 
@@ -293,34 +296,49 @@ curl --request GET \
 {
   "status": "SUCCESS",
   "data": {
-    "createdAt": "2023-04-27T17:00:00.289Z",
+    "createdAt": "2023-05-09T11:05:24.824Z",
     "personalAccess": [],
     "isPinned": false,
     "publicAccess": "none",
     "lastModifiedBy": "christojeffrey",
-    "linkCount": 0,
-    "id": "vKKx8BtpZACWw5yfVfgx",
-    "lastModified": "2023-04-30T06:17:10.104Z",
+    "id": "BKIeWzFTQKE186zG51Vg",
     "type": "folder",
-    "title": "itb",
-    "folderCount": 1,
+    "title": "root",
+    "linkCount": 0,
     "children": [
       {
-        "createdAt": "2023-04-27T17:00:00.203Z",
+        "createdAt": "2023-09-05T16:05:01.190Z",
         "personalAccess": [],
         "isPinned": false,
         "publicAccess": "none",
         "lastModifiedBy": "christojeffrey",
-        "linkCount": 1,
-        "id": "plKnKDZzTKy2aLNpYSHt",
-        "lastModified": "2023-04-30T06:17:10.178Z",
+        "linkCount": 2,
+        "id": "pu1eQdkNLqBqXVjwjtZS",
+        "lastModified": "2023-09-19T15:30:32.279Z",
         "type": "folder",
-        "title": "ppl",
+        "title": "archived",
+        "folderCount": 5,
+        "relativePath": "archived"
+      },
+      {
+        "createdAt": "2023-05-21T06:40:33.268Z",
+        "personalAccess": [],
+        "isPinned": false,
+        "publicAccess": "none",
+        "lastModifiedBy": "christojeffrey",
+        "linkCount": 2,
+        "id": "JBlXqP4g2NC9FExdzR85",
+        "lastModified": "2023-07-20T10:51:43.794Z",
+        "type": "folder",
+        "title": "effie",
         "folderCount": 0,
-        "relativePath": "ppl"
+        "relativePath": "effie"
       }
     ],
-    "path": "/itb"
+    "lastModified": "2023-09-21T20:32:18.443Z",
+    "folderCount": 2,
+    "path": "/",
+    "relativePath": ""
   }
 }
 ```
@@ -342,18 +360,18 @@ curl --request GET \
 | username  | true     | The username of the user which directory wants to be accessed               |
 | path      | false    | The path to the folder or link. If not given, the root directory is assumed |
 
-## Update Link
+## Update Link or Folder
 
 ### HTTP Request
 
-`PATCH https://api.effie.boo/api/directory/link`
+`PATCH https://api.effie.boo/api/directory/update/<username>/<location>`
 
 ```shell
-  curl "https://api.effie.boo/api/directory/link" \
+  curl "https://api.effie.boo/api/directory/christojeffrey/tes" \
   -X PATCH \
   -H Authorization: token \
   -H "Content-Type: application/json" \
-  -d '{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'
+  -d '{"newRelativePath": "testing"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -366,18 +384,13 @@ curl --request GET \
 
 ### Body Parameters
 
-| Parameter       | required | Description                                                                                                  |
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| username        | true     | The username of the user which directory wants to be accessed and written                                    |
-| path            | true     | The path to the folder or link                                                                               |
-| relativePath    | true     | The relative path of the link                                                                                |
-| link            | false    | The new link that will replace the previous one                                                              |
-| title           | false    | The new title that will replace the previous one                                                             |
-| isPinned        | false    | The new isPinned that will replace the previous one                                                          |
-| publicAccess    | false    | The new publicPrivilege that will replace the previous one                                                   |
-| personalAccess  | false    | The new personalAccess that will replace the previous one. only value thats inside the array will be updated |
-| newPath         | false    | The new path that will replace the previous one                                                              |
-| newRelativePath | false    | The new relativePath that will replace the previous one                                                      |
+| Parameter       | required | Description                                                |
+| --------------- | -------- | ---------------------------------------------------------- |
+| link            | false    | The new link that will replace the previous one            |
+| title           | false    | The new title that will replace the previous one           |
+| isPinned        | false    | The new isPinned that will replace the previous one        |
+| publicAccess    | false    | The new publicPrivilege that will replace the previous one |
+| newRelativePath | false    | The new relativePath that will replace the previous one    |
 
 ### Header Parameters
 
@@ -385,27 +398,25 @@ curl --request GET \
 | ------------- | -------- | ----------- |
 | Authorization | true     | effie token |
 
-## Update Folder
-
-```shell
-  curl "https://api.effie.boo/api/directory/link" \
-  -X PATCH \
-  -H Authorization: token \
-  -H "Content-Type: application/json" \
-  -d '{"path": "/ppl", "link": "https://bing.com", "relativePath": "bing", "username": "christojeffrey"}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": "SUCCESS"
-}
-```
+## Move Link or Folder
 
 ### HTTP Request
 
-`PATCH https://api.effie.boo/api/directory/folder`
+`PATCH https://api.effie.boo/api/directory/update/<username>/<location>`
+
+```shell
+  curl "https://api.effie.boo/api/directory/christojeffrey/tes" \
+  -X PATCH \
+  -H Authorization: token \
+  -H "Content-Type: application/json" \
+  -d '{"newPath": "/archived"}'
+```
+
+### Body Parameters
+
+| Parameter | required | Description  |
+| --------- | -------- | ------------ |
+| newPath   | true     | The new path |
 
 ### Header Parameters
 
@@ -413,21 +424,7 @@ curl --request GET \
 | ------------- | -------- | ----------- |
 | Authorization | true     | effie token |
 
-### Body Parameters
-
-| Parameter       | required | Description                                                               |
-| --------------- | -------- | ------------------------------------------------------------------------- |
-| username        | true     | The username of the user which directory wants to be accessed and written |
-| path            | true     | The path to the folder or link                                            |
-| relativePath    | true     | The relative path of the link                                             |
-| title           | false    | The new title that will replace the previous one                          |
-| isPinned        | false    | The new isPinned that will replace the previous one                       |
-| publicAccess    | false    | The new publicPrivilege that will replace the previous one                |
-| personalAccess  | false    | The new personalAccess that will replace the previous one                 |
-| newPath         | false    | The new path that will replace the previous one                           |
-| newRelativePath | false    | The new relativePath that will replace the previous one                   |
-
-## delete link or folder
+## Delete Link or Folder
 
 ```shell
   curl "https://api.effie.boo/api/directory/christojeffrey/ppl/bing" \
